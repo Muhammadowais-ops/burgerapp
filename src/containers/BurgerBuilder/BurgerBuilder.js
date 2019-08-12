@@ -75,7 +75,7 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    alert("you continue");
+    this.props.history.push("/checkout");
   };
 
   render() {

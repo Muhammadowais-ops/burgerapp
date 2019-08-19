@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "../../../components/Ui/Button/Button";
 import classes from "./ContactData.css";
-// import Spinner from "../../../components/Ui/Spinner/Spinner";
+import Spinner from "../../../components/Ui/Spinner/Spinner";
 // import axios from "axios";
 
 class ContactData extends Component {
@@ -71,9 +71,9 @@ class ContactData extends Component {
         </Button>
       </form>
     );
-    // if (this.state.loading) {
-    //   form = <Spinner />;
-    // }
+    if (this.state.loading) {
+      form = <Spinner />;
+    }
     return (
       <div className={classes.ContactData}>
         <h4>Enter your Contact Data</h4>

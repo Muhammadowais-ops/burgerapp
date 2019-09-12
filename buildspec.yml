@@ -12,12 +12,15 @@ phases:
     commands:
       - echo Build phase started on `date`
       - npm run-script build
-  artifacts:
-    files:
-      - "**/*.html"
-      - "**/*.js"
-      - "**/*.css"
-      - "**/*.ico"
-      - package.json
-    discard-paths: yes
-    base-directory: "/burgerapp-master"
+  post_build:
+    - echo Build completed on `date`
+
+artifacts:
+  files:
+    - "**/*.html"
+    - "**/*.js"
+    - "**/*.css"
+    - "**/*.ico"
+    - package.json
+  discard-paths: yes
+  base-directory: "/burgerapp-master"

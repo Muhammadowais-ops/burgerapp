@@ -6,9 +6,18 @@ phases:
       nodejs: 10
   pre_build:
     commands:
-      - echo Entered the pre_build phase...
+      - echo Installing source NPM dependencies
       - npm install
   build:
     commands:
-      - echo building project...
+      - echo Build phase started on `date`
       - npm run-script build
+  artifacts:
+    files:
+      - "**/*.html"
+      - "**/*.js"
+      - "**/*.css"
+      - "**/*.ico"
+      - package.json
+    discard-paths: yes
+    base-directory: "/burgerapp-master"

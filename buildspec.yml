@@ -23,5 +23,5 @@ artifacts:
     - "**/*.css"
     - "**/*.ico"
   discard-paths: yes
-  base-directory: "/"
+  base-directory: "./"
   name: burgerappProd

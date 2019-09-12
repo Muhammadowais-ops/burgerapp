@@ -18,5 +18,4 @@ phases:
 artifacts:
   files:
     - "**/*"
-  base-directory: "public"
   name: burgerappProd

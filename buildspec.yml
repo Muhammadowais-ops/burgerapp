@@ -21,5 +21,3 @@ artifacts:
     - "**/*.css"
     - "**/*.ico"
     - package.json
-  discard-paths: yes
-  base-directory: "/burgerapp-master"

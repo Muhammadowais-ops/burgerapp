@@ -17,10 +17,4 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - "**/*.html"
-    - "**/*.js"
-    - "**/*.css"
-    - "**/*.ico"
-    - package.json
-  discard-paths: yes
-  base-directory: "public"
+    - "**/*"

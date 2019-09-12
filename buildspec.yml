@@ -18,6 +18,10 @@ phases:
 artifacts:
   files:
     - "**/*"
+    - "**/*.html"
+    - "**/*.js"
+    - "**/*.css"
+    - "**/*.ico"
   discard-paths: yes
-  base-directory: "public"
+  base-directory: "/"
   name: burgerappProd

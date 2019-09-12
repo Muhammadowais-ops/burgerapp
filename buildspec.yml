@@ -23,4 +23,4 @@ artifacts:
     - "**/*.ico"
     - package.json
   discard-paths: yes
-  base-directory: "/public"
+  base-directory: "public"

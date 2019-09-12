@@ -4,14 +4,11 @@ phases:
   install:
     runtime-versions:
       nodejs: 10
-    commands:
-      - echo Entered the install phase...
-      - npm install
-    finally:
-      - echo dependency installation stage finished
   pre_build:
     commands:
       - echo Entered the pre_build phase...
-      - npm start
-    finally:
-      - echo app start phase has finished
+      - npm install
+  build:
+    commands:
+      - echo building project...
+      - npm run-script build

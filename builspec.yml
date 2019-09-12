@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - npm install
+    finally:
+      - echo dependency installation stage finished
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - npm start
+    finally:
+      - echo app start phase has finished

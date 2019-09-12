@@ -8,8 +8,8 @@ import NavigationItem from "./NavigationItem/NavigationItem";
 configure({ adapter: new Adapter() });
 
 describe("<NavigationItems />", () => {
-  it("should render a navigation item when app is running", () => {
+  it("should render 2 navigation items when app is running", () => {
     const wrapper = shallow(<NavigationItems />);
-    expect(wrapper.find(NavigationItem));
+    expect(wrapper.find(NavigationItem)).toHaveLength(2);
   });
 });

@@ -19,7 +19,8 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-artifacts:
-  files:
-    - "**/*"
-  name: burgerappProd
+      - aws s3 sync ./ s3://burger-app-production-devops-build-artifact --acl 'public-read' --delete
+#artifacts:
+#  files:
+#   - "**/*"
+# name: burgerappProd

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "../../../components/Ui/Button/Button";
 import classes from "./ContactData.css";
 import Spinner from "../../../components/Ui/Spinner/Spinner";
-// import axios from "axios";
+import axios from "../../../axios-orders";
 
 class ContactData extends Component {
   state = {
@@ -20,23 +20,29 @@ class ContactData extends Component {
     console.log(this.props.ingredients);
 
     // here you can make ajax calls like say axios.post{...}
-    // const order = {
-    //   ingredients: this.props.ingredients,
-    //   price: this.props.price,
-    //   customer: {
-    //     name: "faithful",
-    //     address: {
-    //       street: "teststreet 1",
-    //       zipCode: "41351",
-    //       country: "Malaysia"
-    //     },
-    //     email: "test@test.com",
-    //     deliveryMethod: "fastest"
-    //   }
-    // };
-    // axios.post("/orders.json", order)
-    //   .then(response => console.log(response.data))
-    //   .catch(error => console.log(error.response.data));
+    const order = {
+      ingredients: this.props.ingredients,
+      price: this.props.price,
+      customer: {
+        name: "faithful",
+        address: {
+          street: "teststreet 1",
+          zipCode: "41351",
+          country: "Malaysia"
+        },
+        email: "test@test.com",
+        deliveryMethod: "fastest"
+      }
+    };
+    axios
+      .post("/orders.json", order)
+      .then(response => {
+        this.setState({ loading: false });
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        this.setState({ loading: false });
+      });
   };
 
   render() {

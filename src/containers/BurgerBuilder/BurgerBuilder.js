@@ -86,44 +86,43 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    // console.log("continue");
-    // const queryParams = [];
-    // for (let i in this.state.ingredients) {
-    //   queryParams.push(
-    //     encodeURIComponent(i) +
-    //       "=" +
-    //       encodeURIComponent(this.state.ingredients[i])
-    //   );
-    // }
-    // queryParams.push("price=" + this.state.totalPrice);
-    // const queryString = queryParams.join("&");
-    // this.props.history.push({
-    //   pathname: "/checkout",
-    //   search: "?" + queryString
-    // });
-    this.setState({
-      loading: true
+    console.log("continue");
+    const queryParams = [];
+    for (let i in this.state.ingredients) {
+      queryParams.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.ingredients[i])
+      );
+    }
+    queryParams.push("price=" + this.state.totalPrice);
+    const queryString = queryParams.join("&");
+    this.props.history.push({
+      pathname: "/checkout",
+      search: "?" + queryString
     });
-    const order = {
-      ingredients: this.state.ingredients,
-      totalPrice: this.state.totalPrice,
-      purchasable: false
-    };
-
-    axios
-      .post("/orders.json", order)
-      .then(response => {
-        this.setState({
-          loading: false,
-          purchasing: false
-        });
-      })
-      .catch(error => {
-        this.setState({
-          loading: false,
-          purchasing: false
-        });
-      });
+    // this.setState({
+    //   loading: true
+    // });
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   totalPrice: this.state.totalPrice,
+    //   purchasable: false
+    // };
+    // axios
+    //   .post("/orders.json", order)
+    //   .then(response => {
+    //     this.setState({
+    //       loading: false,
+    //       purchasing: false
+    //     });
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       loading: false,
+    //       purchasing: false
+    //     });
+    //   });
   };
 
   render() {

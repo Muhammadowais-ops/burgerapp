@@ -6,7 +6,7 @@ import ContactData from "./ContactData/ContactData";
 
 class Checkout extends Component {
   state = {
-    ingredients: null,
+    ingredients: "",
     price: 0
   };
 
@@ -18,7 +18,7 @@ class Checkout extends Component {
     this.props.history.replace("/checkout/contact-data");
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
     let price = 0;

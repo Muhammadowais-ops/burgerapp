@@ -1,34 +1,46 @@
 import React, { Component } from "react";
 import Order from "../../components/Order/Order";
-import axios from "axios";
-import WithErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import axios from "../../axios-orders";
+import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 class Orders extends Component {
   state = {
     orders: [],
-    loading: true
+    loading: true,
+    error: null
   };
   componentDidMount() {
-    // use this to fetch data from our backend
-    // axios
-    console.log("I have fetched data");
-    //   .get("/orders")
-
-    //   .then(response => {
-    //     this.setState({ loading: false, orders: response.data });
-    //   })
-    //   .catch(error => {
-    //     this.setState({ loading: false });
-    //   });
+    axios
+      .get("/orders.json")
+      .then(response => {
+        const fetchedOrders = [];
+        for (let key in response.data) {
+          fetchedOrders.push({
+            ...response.data[key],
+            id: key
+          });
+        }
+        console.log(fetchedOrders);
+        this.setState({ loading: false, orders: fetchedOrders });
+      })
+      .catch(error => {
+        this.setState({ loading: false, error: true });
+      });
   }
 
   render() {
     return (
       <div>
-        <Order />
+        {this.state.orders.map(order => (
+          <Order
+            key={order.id}
+            ingredients={order.ingredients}
+            price={+order.price}
+          />
+        ))}
       </div>
     );
   }
 }
 
-export default WithErrorHandler(Orders, axios);
+export default withErrorHandler(Orders, axios);
